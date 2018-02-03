@@ -5,14 +5,7 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
 const MongoClient = require('mongodb').MongoClient; 
 
-var server = app.listen(8082, function () {
-  var host = server.address().address
-  var port = server.address().port
-  console.log("Example app listening at %s:%s Port", host, port)
-});
 
-
- 
  
 app.get('/form', function (req, res) {
   var html='';
@@ -47,6 +40,12 @@ app.post('/thank', urlencodedParser, function (req, res){
 		});
 
 	});
-	
+
   res.send("Item has been Saved in Database !");
  });
+ 
+var server = app.listen(8082, function () {
+  var host = server.address().address
+  var port = server.address().port
+  console.log("Example app listening at %s:%s Port", host, port)
+});
